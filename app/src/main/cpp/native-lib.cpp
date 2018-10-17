@@ -54,6 +54,13 @@ Java_com_example_terry_spectrographcamera2_MainActivity_getBitmapSpetrograph(JNI
 //        dst.at<Vec3b>(half,k)[1]=dst.at<Vec3b>(half,k)[1];
 //        dst.at<Vec3b>(half,k)[2]=dst.at<Vec3b>(half,k)[2];
         data[k] = dst.at<Vec3b>(half,k)[0]*0.3f+dst.at<Vec3b>(half,k)[1]*0.59f+dst.at<Vec3b>(half,k)[2]*0.11;
+//        int cnt=0;
+//        for(int i=k*10;i<dst.cols&&i<(k+1)*10;i++){
+//            data[k] += dst.at<Vec3b>(half,i)[0]*0.3f+dst.at<Vec3b>(half,i)[1]*0.59f+dst.at<Vec3b>(half,i)[2]*0.11;
+//            cnt++;
+//        }
+
+        //data[k]/=cnt;
     }
     jfloatArray result = env->NewFloatArray(dst.cols);
     env->SetFloatArrayRegion(result, 0, dst.cols, data);
